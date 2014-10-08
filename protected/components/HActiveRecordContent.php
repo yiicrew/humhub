@@ -168,12 +168,8 @@ class HActiveRecordContent extends HActiveRecord
 
     public function afterValidate()
     {
-        if (!$this->content->validate())
+        if (!parent::afterValidate() || !$this->content->validate())
             return false;
-
-        if (!parent::afterValidate()) {
-            return false;
-        }
 
         return true;
     }
